@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>stapp website</title>
+  <meta name="description" content="A modern static site starter for Azure Static Web Apps.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-0: #fbf7ef;
+      --bg-1: #efe7da;
+      --ink: #1d1d1f;
+      --muted: #56585f;
+      --brand: #ff6b35;
+      --brand-2: #0f7173;
+      --card: rgba(255, 255, 255, 0.7);
+      --line: rgba(29, 29, 31, 0.14);
+      --shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      color: var(--ink);
+      font-family: "Space Grotesk", sans-serif;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255, 107, 53, 0.28), transparent 34%),
+        radial-gradient(circle at 84% 24%, rgba(15, 113, 115, 0.26), transparent 35%),
+        linear-gradient(140deg, var(--bg-0), var(--bg-1));
+    }
+
+    .shell {
+      width: min(1080px, 92vw);
+      margin: 0 auto;
+      padding: 48px 0 56px;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      backdrop-filter: blur(6px);
+      padding: 10px 16px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      animation: rise 700ms ease-out both;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--brand), var(--brand-2));
+      box-shadow: 0 0 0 6px rgba(255, 107, 53, 0.15);
+    }
+
+    h1 {
+      margin: 20px 0 12px;
+      font-family: "Syne", sans-serif;
+      font-size: clamp(2.2rem, 7.3vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      max-width: 14ch;
+      animation: rise 850ms ease-out 80ms both;
+    }
+
+    p {
+      margin: 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.6vw, 1.18rem);
+      line-height: 1.6;
+      animation: rise 950ms ease-out 160ms both;
+    }
+
+    .grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+      animation: rise 1050ms ease-out 230ms both;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .card.hero {
+      grid-column: span 8;
+      min-height: 200px;
+      background:
+        linear-gradient(155deg, rgba(255, 107, 53, 0.2), rgba(15, 113, 115, 0.18)),
+        var(--card);
+    }
+
+    .card.side {
+      grid-column: span 4;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 200px;
+    }
+
+    .stat {
+      margin-top: 18px;
+      font-size: 2.1rem;
+      font-family: "Syne", sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    .action {
+      margin-top: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #ffffff;
+      background: linear-gradient(120deg, var(--brand), #ff9758);
+      font-weight: 700;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      box-shadow: 0 14px 30px rgba(255, 107, 53, 0.34);
+    }
+
+    .action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 35px rgba(255, 107, 53, 0.42);
+    }
+
+    .action:focus-visible {
+      outline: 3px solid #18181a;
+      outline-offset: 3px;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 860px) {
+      .shell {
+        padding-top: 30px;
+      }
+
+      .grid {
+        gap: 14px;
+      }
+
+      .card.hero,
+      .card.side {
+        grid-column: 1 / -1;
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="badge"><span class="dot" aria-hidden="true"></span> static web app</div>
+    <h1>Build once, ship instantly.</h1>
+    <p>
+      This is a ready-to-publish starter page for Azure Static Web Apps.
+      Replace the sections below with your own product, portfolio, or landing content.
+    </p>
+
+    <section class="grid" aria-label="Site highlights">
+      <article class="card hero">
+        <h2>Fast first paint</h2>
+        <p>
+          Lightweight HTML and CSS only. No framework lock-in, no build step required for this baseline page.
+        </p>
+        <a class="action" href="https://learn.microsoft.com/azure/static-web-apps/" target="_blank" rel="noopener noreferrer">
+          Open Azure Static Web Apps Docs
+        </a>
+      </article>
+
+      <article class="card side">
+        <div>
+          <h2>Simple structure</h2>
+          <p>Start with one entry file and expand to a full static site when you are ready.</p>
+        </div>
+        <div class="stat">1 file</div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
