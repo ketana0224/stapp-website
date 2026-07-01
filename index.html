@@ -322,15 +322,15 @@
       <p>簡易認証でログインしてください</p>
       <div class="form-group">
         <label for="username">Username</label>
-        <input type="text" id="username" placeholder="demo" autofocus>
+        <input type="text" id="username" placeholder="handson" autofocus>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" placeholder="password">
+        <input type="password" id="password" placeholder="microsoftazure">
       </div>
       <button class="login-button" id="loginBtn">ログイン</button>
       <p style="font-size: 0.8rem; color: var(--muted); margin-top: 20px;">
-        ※ 初期値: demo / password
+        ※ 初期値: handson / microsoftazure
       </p>
     </div>
   </div>
@@ -378,8 +378,8 @@
     const loginBtn = document.getElementById('loginBtn');
 
     // Default credentials
-    const DEFAULT_USER = 'demo';
-    const DEFAULT_PASS = 'password';
+    const DEFAULT_USER = 'handson';
+    const DEFAULT_PASS = 'microsoftazure';
 
     // Initialize on page load
     window.addEventListener('DOMContentLoaded', () => {
