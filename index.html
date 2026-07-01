@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>stapp website</title>
-  <meta name="description" content="A modern static site starter for Azure Static Web Apps.">
+  <title>stapp ウェブサイト</title>
+  <meta name="description" content="暗号化ZIPを配布するための静的サイトです。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@600;800&display=swap" rel="stylesheet">
@@ -318,14 +318,14 @@
   <!-- Login Screen -->
   <div class="login-screen active" id="loginScreen">
     <div class="login-container">
-      <h2>Welcome</h2>
+      <h2>ようこそ</h2>
       <p>簡易認証でログインしてください</p>
       <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username">ユーザー名</label>
         <input type="text" id="username" placeholder="handson" autofocus>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">パスワード</label>
         <input type="password" id="password" placeholder="microsoftazure">
       </div>
       <button class="login-button" id="loginBtn">ログイン</button>
@@ -340,33 +340,30 @@
 
   <!-- Main Content -->
   <main class="shell" id="mainContent" style="display: none;">
-    <div class="badge"><span class="dot" aria-hidden="true"></span> static web app</div>
-    <h1>Build once, ship instantly.</h1>
+    <div class="badge"><span class="dot" aria-hidden="true"></span> 静的ウェブアプリ</div>
+    <h1>暗号化ZIPダウンロード</h1>
     <p>
-      This is a ready-to-publish starter page for Azure Static Web Apps.
-      Replace the sections below with your own product, portfolio, or landing content.
+      このページでは、暗号化済みのZIPファイルをダウンロードできます。
+      必要に応じてログイン後に下のボタンから取得してください。
     </p>
 
-    <section class="grid" aria-label="Site highlights">
+    <section class="grid" aria-label="ダウンロード案内">
       <article class="card hero">
-        <h2>Fast first paint</h2>
+        <h2>ダウンロード</h2>
         <p>
-          Lightweight HTML and CSS only. No framework lock-in, no build step required for this baseline page.
+          `user_info.zip` は暗号化済みです。解凍時にパスワードを入力してください。
         </p>
-        <a class="action" href="https://learn.microsoft.com/azure/static-web-apps/" target="_blank" rel="noopener noreferrer">
-          Open Azure Static Web Apps Docs
-        </a>
         <a class="action" href="./user_info.zip" download>
-          Download Encrypted ZIP
+          user_info.zip をダウンロード
         </a>
       </article>
 
       <article class="card side">
         <div>
-          <h2>Simple structure</h2>
-          <p>Start with one entry file and expand to a full static site when you are ready.</p>
+          <h2>補足</h2>
+          <p>このページのリンクは `user_info.zip` のみです。</p>
         </div>
-        <div class="stat">1 file</div>
+        <div class="stat">1 ファイル</div>
       </article>
     </section>
   </main>
@@ -394,7 +391,7 @@
       loginBtn.addEventListener('click', handleLogin);
       logoutBtn.addEventListener('click', handleLogout);
 
-      // Allow Enter key to login
+      // Enterキーでログイン
       passwordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') handleLogin();
       });
@@ -407,19 +404,19 @@
       const username = usernameInput.value.trim();
       const password = passwordInput.value.trim();
 
-      // Simple validation
+      // 入力チェック
       if (!username || !password) {
         alert('ユーザー名とパスワードを入力してください');
         return;
       }
 
-      // Check credentials
+      // 認証情報チェック
       if (username === DEFAULT_USER && password === DEFAULT_PASS) {
-        // Save to localStorage
+        // localStorageに保存
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('username', username);
 
-        // Show main content
+        // メインコンテンツ表示
         showMainContent();
       } else {
         alert('ユーザー名またはパスワードが間違っています');
@@ -432,11 +429,11 @@
       localStorage.removeItem('isLoggedIn');
       localStorage.removeItem('username');
 
-      // Clear inputs
+      // 入力欄をクリア
       usernameInput.value = '';
       passwordInput.value = '';
 
-      // Show login screen
+      // ログイン画面を表示
       showLoginScreen();
     }
 
@@ -460,9 +457,9 @@
       mainContent.style.display = 'block';
       logoutBtn.classList.remove('hidden');
 
-      // Welcome message
+      // ウェルカムログ
       const username = localStorage.getItem('username');
-      console.log(`Welcome, ${username}!`);
+      console.log(`ようこそ、${username} さん`);
     }
   </script>
 </body>
